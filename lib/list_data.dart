@@ -16,8 +16,8 @@ class ListData extends StatefulWidget {
 class _ListDataState extends State<ListData> {
   List<Map<String, String>> dataMahasiswa = [];
   String url = Platform.isAndroid
-      ? 'http://192.168.0.107/api_flutter/index.php'
-      : 'http://localhost/api_flutter/index.php';
+      ? 'http://192.168.1.3/belajarflutter/index.php'
+      : 'http://localhost/belajarflutter/index.php';
   @override
   void initState() {
     super.initState();
@@ -65,7 +65,7 @@ class _ListDataState extends State<ListData> {
               Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: ((context) => const TambahData(),),
+                    builder: ((context) => const TambahData()),
                   ));
             },
             child: const Text('Tambah Data Mahasiswa'),
