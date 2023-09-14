@@ -93,14 +93,14 @@ class _ListDataState extends State<ListData> {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       IconButton(
-                        icon: Icon(Icons.visibility),
+                        icon: const Icon(Icons.visibility),
                         onPressed: () {
                           lihatMahasiswa(dataMahasiswa[index]['nama']!,
                               dataMahasiswa[index]['jurusan']!);
                         },
                       ),
                       IconButton(
-                        icon: Icon(Icons.edit),
+                        icon: const Icon(Icons.edit),
                         onPressed: () {
                           Navigator.pushReplacement(
                               context,
@@ -114,7 +114,7 @@ class _ListDataState extends State<ListData> {
                         },
                       ),
                       IconButton(
-                        icon: Icon(Icons.delete),
+                        icon: const Icon(Icons.delete),
                         onPressed: () {
                           deleteData(int.parse(dataMahasiswa[index]['id']!))
                               .then((result) {

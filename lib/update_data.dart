@@ -3,14 +3,13 @@ import 'package:crud_flutter/list_data.dart';
 import 'package:crud_flutter/side_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'dart:io';
 
 class UpdateData extends StatefulWidget {
-  String id;
-  String nama;
-  String jurusan;
-  String url;
-  UpdateData(
+  final String id;
+  final String nama;
+  final String jurusan;
+  final String url;
+  const UpdateData(
       {super.key,
       required this.id,
       required this.nama,
@@ -25,7 +24,6 @@ class _UpdateData extends State<UpdateData> {
   _UpdateData({required this.url});
   final _namaController = TextEditingController();
   final _jurusanController = TextEditingController();
-  
 
   Future<void> updateData(String nama, String jurusan, String id) async {
     final response = await http.put(
@@ -83,7 +81,7 @@ class _UpdateData extends State<UpdateData> {
           Padding(
               padding: const EdgeInsets.only(top: 20),
               child: ElevatedButton(
-                  child: Text(
+                  child: const Text(
                     'Simpan',
                     style: TextStyle(color: Colors.white),
                   ),

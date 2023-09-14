@@ -117,27 +117,4 @@ class _TambahDataState extends State<TambahData> {
       ),
     );
   }
-
-  // Future<void> upsertKontak() async {
-  //   if (widget.tambah != null) {
-  //     //update
-  //     await db.updateKontak(Tamb.fromMap({
-  //       'id': widget.kontak!.id,
-  //       'name': name!.text,
-  //       'mobileNo': mobileNo!.text,
-  //       'email': email!.text,
-  //       'company': company!.text
-  //     }));
-  //     Navigator.pop(context, 'update');
-  //   } else {
-  //     //insert
-  //     await db.saveKontak(Kontak(
-  //       name: name!.text,
-  //       mobileNo: mobileNo!.text,
-  //       email: email!.text,
-  //       company: company!.text,
-  //     ));
-  //     Navigator.pop(context, 'save');
-  //   }
-  // }
 }
