@@ -18,7 +18,7 @@ class _TambahDataState extends State<TambahData> {
 
   Future postData(String nama, String jurusan) async {
     String url = Platform.isAndroid
-      ? 'http://192.168.1.3/belajarflutter/index.php'
+      ? 'http://192.168.1.7/belajarflutter/index.php'
       : 'http://localhost/belajarflutter/index.php';
     Map<String, String> headers = {'Content-Type': 'application/json'};
     String jsonBody = '{"nama": "$nama", "jurusan": "$jurusan"}';

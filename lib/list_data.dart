@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:crud_flutter/side_menu.dart';
 import 'package:crud_flutter/tambah_data.dart';
+import 'package:crud_flutter/update_data.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -16,7 +17,7 @@ class ListData extends StatefulWidget {
 class _ListDataState extends State<ListData> {
   List<Map<String, String>> dataMahasiswa = [];
   String url = Platform.isAndroid
-      ? 'http://192.168.1.3/belajarflutter/index.php'
+      ? 'http://192.168.1.7/belajarflutter/index.php'
       : 'http://localhost/belajarflutter/index.php';
   @override
   void initState() {
@@ -51,6 +52,17 @@ class _ListDataState extends State<ListData> {
     }
   }
 
+  lihatMahasiswa(String nama, String jurusan) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+              title: Text("Nama Mahasiswa : $nama"),
+              content: Text("Jurusan Kuliah : $jurusan"));
+        });
+  }
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,13 +95,22 @@ class _ListDataState extends State<ListData> {
                       IconButton(
                         icon: Icon(Icons.visibility),
                         onPressed: () {
-//lihatMahasiswa(index);
+                          lihatMahasiswa(dataMahasiswa[index]['nama']!,
+                              dataMahasiswa[index]['jurusan']!);
                         },
                       ),
                       IconButton(
                         icon: Icon(Icons.edit),
                         onPressed: () {
-//editMahasiswa(index);
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: ((context) => UpdateData(
+                                    id: dataMahasiswa[index]['id']!,
+                                    nama: dataMahasiswa[index]['nama']!,
+                                    jurusan: dataMahasiswa[index]['jurusan']!,
+                                    url: url)),
+                              ));
                         },
                       ),
                       IconButton(
