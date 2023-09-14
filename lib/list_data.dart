@@ -52,16 +52,33 @@ class _ListDataState extends State<ListData> {
     }
   }
 
-  lihatMahasiswa(String nama, String jurusan) {
+  lihatMahasiswa(String id, String nama, String jurusan) {
     showDialog(
         context: context,
-        builder: (context) {
+        builder: (BuildContext context) {
           return AlertDialog(
-              title: Text("Nama Mahasiswa : $nama"),
-              content: Text("Jurusan Kuliah : $jurusan"));
+            title: Text('Detail Mahasiswa'),
+            content: Container(
+              height: 100.0,
+              width: 400.0,
+              child: ListView(
+                padding: const EdgeInsets.all(8),
+                children: <Widget>[
+                  Container(
+                    child: Text('Id : $id'),
+                  ),
+                  Container(
+                    child: Text('Nama : $nama'),
+                  ),
+                  Container(
+                    child: Text('Jurusan : $jurusan'),
+                  ),
+                ],
+              ),
+            ),
+          );
         });
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +112,9 @@ class _ListDataState extends State<ListData> {
                       IconButton(
                         icon: const Icon(Icons.visibility),
                         onPressed: () {
-                          lihatMahasiswa(dataMahasiswa[index]['nama']!,
+                          lihatMahasiswa(
+                              dataMahasiswa[index]['id']!,
+                              dataMahasiswa[index]['nama']!,
                               dataMahasiswa[index]['jurusan']!);
                         },
                       ),
