@@ -60,6 +60,7 @@ class _UpdateData extends State<UpdateData> {
               controller: _namaController,
               decoration: InputDecoration(
                   label: Text(widget.nama),
+                  hintText: "Nama...",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                   )),
@@ -73,6 +74,7 @@ class _UpdateData extends State<UpdateData> {
               controller: _jurusanController,
               decoration: InputDecoration(
                   label: Text(widget.jurusan),
+                  hintText: "Jurusan...",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                   )),
