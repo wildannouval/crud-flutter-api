@@ -7,13 +7,13 @@ import 'package:http/http.dart' as http;
 class UpdateData extends StatefulWidget {
   final String id;
   final String nama;
-  final String jurusan;
+  final String kedudukan;
   final String url;
   const UpdateData(
       {super.key,
       required this.id,
       required this.nama,
-      required this.jurusan,
+      required this.kedudukan,
       required this.url});
   @override
   _UpdateData createState() => _UpdateData(url: url);
@@ -23,13 +23,13 @@ class _UpdateData extends State<UpdateData> {
   String url;
   _UpdateData({required this.url});
   final _namaController = TextEditingController();
-  final _jurusanController = TextEditingController();
+  final _kedudukanController = TextEditingController();
 
-  Future<void> updateData(String nama, String jurusan, String id) async {
+  Future<void> updateData(String nama, String kedudukan, String id) async {
     final response = await http.put(
       Uri.parse(url),
       body: jsonEncode(
-          <String, String>{'id': id, 'nama': nama, 'jurusan': jurusan}),
+          <String, String>{'id': id, 'nama': nama, 'kedudukan': kedudukan}),
     );
 
     if (response.statusCode == 200) {
@@ -47,7 +47,7 @@ class _UpdateData extends State<UpdateData> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Edit Mahasiswa')),
+        appBar: AppBar(title: const Text('Edit Data Anggota')),
         drawer: const SideMenu(),
         body: ListView(padding: const EdgeInsets.all(16.0), children: [
           Padding(
@@ -69,10 +69,10 @@ class _UpdateData extends State<UpdateData> {
               top: 20,
             ),
             child: TextField(
-              controller: _jurusanController,
+              controller: _kedudukanController,
               decoration: InputDecoration(
-                  label: Text(widget.jurusan),
-                  hintText: "Jurusan...",
+                  label: Text(widget.kedudukan),
+                  hintText: "Kedudukan...",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                   )),
@@ -86,7 +86,7 @@ class _UpdateData extends State<UpdateData> {
                     style: TextStyle(color: Colors.white),
                   ),
                   onPressed: () {
-                    updateData(_namaController.text, _jurusanController.text,
+                    updateData(_namaController.text, _kedudukanController.text,
                         widget.id);
                   }))
         ]));

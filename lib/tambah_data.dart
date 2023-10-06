@@ -14,14 +14,14 @@ class TambahData extends StatefulWidget {
 
 class _TambahDataState extends State<TambahData> {
   final namaController = TextEditingController();
-  final jurusanController = TextEditingController();
+  final kedudukanController = TextEditingController();
 
-  Future postData(String nama, String jurusan) async {
+  Future postData(String nama, String kedudukan) async {
     String url = Platform.isAndroid
-      ? 'http://192.168.1.7/belajarflutter/index.php'
+      ? 'http://172.20.10.3/PemrogramanMobile/latihan/index.php'
       : 'http://localhost/belajarflutter/index.php';
     Map<String, String> headers = {'Content-Type': 'application/json'};
-    String jsonBody = '{"nama": "$nama", "jurusan": "$jurusan"}';
+    String jsonBody = '{"nama": "$nama", "kedudukan": "$kedudukan"}';
     var response = await http.post(
       Uri.parse(url),
       headers: headers,
@@ -39,7 +39,7 @@ class _TambahDataState extends State<TambahData> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Form Mahasiswa'),
+        title: const Text('Form Data Anggota'),
       ),
       drawer: const SideMenu(),
       body: ListView(
@@ -63,9 +63,9 @@ class _TambahDataState extends State<TambahData> {
               top: 20,
             ),
             child: TextField(
-              controller: jurusanController,
+              controller: kedudukanController,
               decoration: InputDecoration(
-                  labelText: 'Jurusan',
+                  labelText: 'kedudukan',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                   )),
@@ -80,9 +80,9 @@ class _TambahDataState extends State<TambahData> {
               ),
               onPressed: () {
                 String nama = namaController.text;
-                String jurusan = jurusanController.text;
+                String kedudukan = kedudukanController.text;
                 // print(nama);
-                postData(nama, jurusan).then((result) {
+                postData(nama, kedudukan).then((result) {
                   //print(result['pesan']);
                   if (result['pesan'] == 'berhasil') {
                     showDialog(

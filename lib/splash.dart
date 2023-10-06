@@ -31,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
               height: 20,
             ),
             Text(
-              "Unsoed App",
+              "Aplikasi Pengelolaan Anggota Kelompok",
               style: TextStyle(
                 fontSize: 18.0,
                 color: Colors.black,
@@ -39,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
               textAlign: TextAlign.center,
             ),
             Text(
-              "©Universitas Jenderal Soedirman",
+              "©Daffa Khairon Khan",
               style: TextStyle(
                 fontSize: 14.0,
                 color: Colors.black,
